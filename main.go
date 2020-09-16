@@ -1,15 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"golangapis/database"
+
+	_ "github.com/go-sql-driver/mysql"
+)
 
 func main() {
+	databaseConnection := database.InitDB()
 
-	var suma int = 2 + 2
-	var resta int = 4 - 2
-	resta = 1
-	suma = 1
-	const year int = 2019
+	//logica Negocio
 
-	fmt.Println(suma + resta)
-	fmt.Println(year)
+	defer databaseConnection.Close()
+	fmt.Println(databaseConnection)
 }
